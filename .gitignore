@@ -1,0 +1,10 @@
+# Logs
+*.log
+
+# Terraform variable files
+*.tfvars
+*.tfvars.json
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
