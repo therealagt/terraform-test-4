@@ -3,13 +3,14 @@ module "test-vpc-module" {
   version      = "~> 16.0"
   project_id   = var.project_id
   network_name = "my-custom-mode-network"
-  mtu          = 1460
 
   subnets = [
     {
       subnet_name   = "subnet-01"
       subnet_ip     = "10.10.10.0/24"
       subnet_region = "europe-west1"
+      subnet_private_access = true
+      subnet_flow_logs      = true
       description   = "App subnet"
     },
     {
