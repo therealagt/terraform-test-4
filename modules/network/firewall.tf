@@ -1,11 +1,13 @@
 locals {
   vpc_name = "my-custom-mode-network"
+  backend_ports = ["80", "443"]
 
   subnet_cidrs = {
     app   = "10.10.10.0/24"
     proxy = "10.10.20.0/24"
-    db    = "10.10.30.0/24"
-    audit = "10.10.40.0/24"
+    frontend = "10.10.30.0/24"
+    db    = "10.10.40.0/24"
+    audit = "10.10.50.0/24"
   }
 
   target_tags = {
@@ -27,7 +29,7 @@ resource "google_compute_firewall" "allow_ilb_proxy_to_app" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "443"]
+    ports    = local.backend_ports
   }
 
   description = "Allow traffic from proxy-only subnet to app backends"
@@ -45,7 +47,7 @@ resource "google_compute_firewall" "allow_hc_to_app" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "443"]
+    ports    = local.backend_ports
   }
 
   description = "Allow Google Cloud health checks to app backends"

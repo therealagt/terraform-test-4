@@ -19,19 +19,25 @@ module "test-vpc-module" {
       subnet_region = "europe-west1"
       purpose       = "REGIONAL_MANAGED_PROXY"
       role          = "ACTIVE"
-      description   = "Internal HTTP load balancer subnet"
+      description   = "Internal HTTP load balancer proxy-only subnet"
     },
     {
-      subnet_name           = "subnet-03"
-      subnet_ip             = "10.10.30.0/24"
+      subnet_name   = "subnet-03"
+      subnet_ip     = "10.10.30.0/24"
+      subnet_region = "europe-west1"
+      description   = "Internal HTTP load balancer frontend subnet"
+    },
+    {
+      subnet_name           = "subnet-04"
+      subnet_ip             = "10.10.40.0/24"
       subnet_region         = "europe-west1"
       subnet_private_access = true
       subnet_flow_logs      = true
       description           = "DB subnet"
     },
     {
-      subnet_name               = "subnet-04"
-      subnet_ip                 = "10.10.40.0/24"
+      subnet_name               = "subnet-05"
+      subnet_ip                 = "10.10.50.0/24"
       subnet_region             = "europe-west1"
       subnet_flow_logs          = true
       subnet_flow_logs_interval = "INTERVAL_10_MIN"
