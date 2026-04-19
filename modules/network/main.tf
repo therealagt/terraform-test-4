@@ -19,13 +19,13 @@ module "test-vpc-module" {
       subnet_region = "europe-west1"
       purpose       = "REGIONAL_MANAGED_PROXY"
       role          = "ACTIVE"
-      description   = "Internal HTTP load balancer proxy-only subnet"
+      description   = "Internal HTTPS load balancer proxy-only subnet"
     },
     {
       subnet_name   = "subnet-03"
       subnet_ip     = "10.10.30.0/24"
       subnet_region = "europe-west1"
-      description   = "Internal HTTP load balancer frontend subnet"
+      description   = "Internal HTTPS load balancer frontend subnet"
     },
     {
       subnet_name           = "subnet-04"
